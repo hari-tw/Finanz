@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -13,7 +13,36 @@ import {
 } from 'react-native';
 
 export default class Finanz extends Component {
+
+    constructor() {
+        super()
+        this.state = {}
+
+        console.log("inside constructor")
+    }
+
+    componentWillMount() {
+        console.log("inside componentWillMount")
+    }
+
+    componentDidMount() {
+        console.log("inside componentDidMount")
+    }
+
+    componentWillUpdate() {
+        console.log("inside componentWillUpdate")
+    }
+
+    componentDidUpdate() {
+        console.log("inside componentDidUpdate")
+    }
+
+    componentWillUnmount() {
+        console.log("inside componentWillUnmount")
+    }
+
     render() {
+        console.log("inside render")
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
