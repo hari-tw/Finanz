@@ -6,71 +6,42 @@ import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
-    Image,
     View,
-    Text,
-    TouchableOpacity
+    ListView,
+    StatusBar
 } from 'react-native';
+
+import StockCell from './../component/StockCell'
 
 export default class Home extends Component {
 
     constructor() {
-        super()
+        super();
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            likes: 0,
-            dislikes: 0
-        }
-
-        console.log("inside constructor")
-    }
-
-    componentWillMount() {
-        console.log("inside componentWillMount")
-    }
-
-    componentDidMount() {
-        console.log("inside componentDidMount")
-    }
-
-    componentWillUpdate() {
-        console.log("inside componentWillUpdate")
-    }
-
-    componentDidUpdate() {
-        console.log("inside componentDidUpdate")
-    }
-
-    componentWillUnmount() {
-        console.log("inside componentWillUnmount")
-    }
-
-    increaseLikeCount() {
-        this.setState({likes: this.state.likes + 1});
-        console.log("liked by : ", this.state.likes);
-    }
-
-    increaseDislikeCount() {
-        this.setState({dislikes: this.state.dislikes + 1});
-        console.log("liked by : ", this.state.dislikes);
+            dataSource: ds.cloneWithRows([{symbol: "APPL", share: "100", stockPrice: "143.64", change: "0.96"},
+                {symbol: "GOOG", share: "100", stockPrice: "862.76", change: "2.32"},
+                {symbol: "YHOO", share: "100", stockPrice: "48.15", change: "-0.34"},
+                {symbol: "DOW J", share: "100", stockPrice: "20763.89", change: "-1.34"},
+                {symbol: "S&P/ASX 200", share: "100", stockPrice: "5871.80", change: "0.30"},
+                {symbol: "^AORD", share: "100", stockPrice: "5900.70", change: "-0.26"},
+                {symbol: "FTSE 100", share: "100", stockPrice: "7283.20", change: "0.25"},
+            ]),
+        };
     }
 
     render() {
-        console.log("inside render")
         return (
             <View style={styles.container}>
-                <Image source={require('../images/lab.jpg')} style={styles.image}/>
-
-                <View style={{width: 300, flexDirection: 'row', justifyContent: 'space-between'}}>
-
-                    <TouchableOpacity onPress={() => this.increaseLikeCount()} style={{padding: 10}}>
-                        <Image source={require('../images/like-icon.png')}/>
-                        <Text style={{padding: 11}}>{this.state.likes} </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => this.increaseDislikeCount()} style={{padding: 10}}>
-                        <Image source={require('../images/dislike-icon.png')}/>
-                        <Text style={{padding: 11}}>{this.state.dislikes} </Text>
-                    </TouchableOpacity>
+                <StatusBar
+                    backgroundColor="red"
+                    barStyle="light-content"
+                />
+                <View style={styles.stocksBlock}>
+                    <ListView
+                        dataSource={this.state.dataSource}
+                        renderRow={stock => <StockCell stock={stock}/>}
+                    />
 
                 </View>
             </View>
@@ -81,14 +52,8 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    image: {
-        height: 300,
-        width: 300,
-        borderColor: '#000000',
-        borderWidth: 2
+        justifyContent: 'space-between',
+        backgroundColor: 'black',
+        paddingTop: 20
     }
 });
