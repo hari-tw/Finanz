@@ -58,18 +58,20 @@ export default class Home extends Component {
         console.log("inside render")
         return (
             <View style={styles.container}>
-                <Image
-                    source={require('../images/lab.jpg')} style={styles.image}
-                />
+                <Image source={require('../images/lab.jpg')} style={styles.image}/>
+
                 <View style={{width: 300, flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <TouchableOpacity onPress={() => this.increaseLikeCount()}  style={{padding:10}}>
-                        <Image source={require('../images/like-icon.png')} />
+
+                    <TouchableOpacity onPress={() => this.increaseLikeCount()} style={{padding: 10}}>
+                        <Image source={require('../images/like-icon.png')}/>
                         <Text style={{padding: 11}}>{this.state.likes} </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.increaseDislikeCount()} style={{padding:10}}>
-                        <Image source={require('../images/dislike-icon.png')} />
+
+                    <TouchableOpacity onPress={() => this.increaseDislikeCount()} style={{padding: 10}}>
+                        <Image source={require('../images/dislike-icon.png')}/>
                         <Text style={{padding: 11}}>{this.state.dislikes} </Text>
                     </TouchableOpacity>
+
                 </View>
             </View>
         );
