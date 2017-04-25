@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
-    Text,
+    Image,
     View
 } from 'react-native';
 
@@ -45,9 +45,9 @@ export default class Finanz extends Component {
         console.log("inside render")
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native Bootcamp!
-                </Text>
+                <Image
+                    source={require('./images/lab.jpg')} style={styles.image}
+                />
             </View>
         );
     }
@@ -60,16 +60,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    image:{
+        height: 300,
+        width: 300,
+        borderColor: '#000000',
+        borderWidth: 2
+    }
 });
 
 AppRegistry.registerComponent('Finanz', () => Finanz);
