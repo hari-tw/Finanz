@@ -4,11 +4,27 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import {
-    AppRegistry,
-} from 'react-native';
+  AppRegistry,
+} from 'react-native'
 
-import Home from './screen/Home';
+import Home from './screen/Home'
 
-AppRegistry.registerComponent('Finanz', () => Home);
+import { Provider } from 'react-redux'
+import configureStore from './store'
+
+const store = configureStore()
+
+export default class WrappedHome extends Component {
+
+  render () {
+    return (
+      <Provider store={store}>
+        <Home/>
+      </Provider>
+    )
+  }
+}
+
+AppRegistry.registerComponent('Finanz', () => WrappedHome)
