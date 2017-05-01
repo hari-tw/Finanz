@@ -5,9 +5,6 @@
 // import { combineReducers } from 'redux'
 
 const likeDisLikeReducer = function likeDisLike (state, action) {
-  console.log('inside reducer')
-  console.log(action)
-
   switch (action.type) {
     case 'LIKE':
       console.log(state)
