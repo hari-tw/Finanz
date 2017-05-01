@@ -4,25 +4,38 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import {
-	AppRegistry,
-} from 'react-native';
+  AppRegistry,
+} from 'react-native'
 
-import {StackNavigator} from 'react-navigation';
+import { Provider } from 'react-redux'
 
-import Home from './screen/Home';
-import Cat from './screen/Cat';
-import Puppy from './screen/Puppy';
-import CatAndPuppy from './screen/CatAndPuppy';
+import { StackNavigator } from 'react-navigation'
 
-const app = StackNavigator({
-	Home: {screen: Home},
-	Puppy: {screen: Puppy},
-	Cat: {screen: Cat},
-	CatAndPuppy: {screen: CatAndPuppy},
-});
+import Home from './screen/Home'
+import Cat from './screen/Cat'
+import Puppy from './screen/Puppy'
+import CatAndPuppy from './screen/CatAndPuppy'
 
-export default app;
+import configureStore from './store'
+const store = configureStore()
 
-AppRegistry.registerComponent('Finanz', () => app);
+const Root = StackNavigator({
+  Home: {screen: Home},
+  Puppy: {screen: Puppy},
+  Cat: {screen: Cat},
+  CatAndPuppy: {screen: CatAndPuppy},
+})
+
+export default class App extends Component {
+  render () {
+    return (
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    );
+  }
+}
+
+AppRegistry.registerComponent('Finanz', () => App)
