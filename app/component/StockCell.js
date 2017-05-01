@@ -10,6 +10,10 @@ import {
   StyleSheet,
 } from 'react-native'
 
+import * as selectActions from '../actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default class StockCell extends React.Component {
+class StockCell extends React.Component {
 
   render () {
 
@@ -108,12 +112,15 @@ export default class StockCell extends React.Component {
   }
 }
 
-StockCell.propTypes = {
-  stock: React.PropTypes.shape({
-    symbol: React.PropTypes.string,
-  }),
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    selectedStock: state.selectedStock
+  }
 }
 
-StockCell.defaultProps = {
-  stock: {},
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(selectActions, dispatch)
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockCell)

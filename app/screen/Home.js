@@ -13,11 +13,7 @@ import {
 
 import StockCell from './../component/StockCell'
 
-import * as selectActions from '../actions'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-class Home extends Component {
+export default class Home extends Component {
 
   constructor () {
     super()
@@ -47,7 +43,7 @@ class Home extends Component {
         <View style={styles.stocksBlock}>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={stock => <StockCell stock={stock} selectStock={selectStock} selectedStock={selectedStock}/>}
+            renderRow={stock => <StockCell stock={stock}/>}
           />
 
         </View>
@@ -56,19 +52,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('inside mapStateToProps');
-  console.log(state);
-  return {
-    selectedStock: state.selectedStock
-  }
-}
-
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators(selectActions, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
 const styles = StyleSheet.create({
   container: {
