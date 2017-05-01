@@ -9,6 +9,10 @@ import allReducers from './reducers'
 const createStoreWithMiddleware = applyMiddleware()(createStore)
 
 export default function () {
-  let defaultState = {likes: 0, dislikes: 0}
+  let defaultState = {
+    puppy: {likes: 0, dislikes: 0},
+    cat: {likes: 0, dislikes: 0},
+    catAndPuppy: {likes: 0, dislikes: 0}
+  }
   return createStoreWithMiddleware(allReducers, defaultState)
 }

@@ -22,42 +22,20 @@ class Home extends Component {
     super()
   }
 
-  componentWillMount () {
-    console.log('inside componentWillMount')
-  }
-
-  componentDidMount () {
-    console.log('inside componentDidMount')
-  }
-
-  componentWillUpdate () {
-    console.log('inside componentWillUpdate')
-  }
-
-  componentDidUpdate () {
-    console.log('inside componentDidUpdate')
-  }
-
-  componentWillUnmount () {
-    console.log('inside componentWillUnmount')
-  }
-
   render () {
-    console.log('inside render')
-    console.log(this.props);
-    var {IncrementAction, DecrementAction, likes, dislikes} = this.props
+    var {IncrementAction, DecrementAction, likes, dislikes, id} = this.props
     return (
       <View style={styles.container}>
         <Image source={require('../images/lab.jpg')} style={styles.image}/>
 
         <View style={{width: 300, flexDirection: 'row', justifyContent: 'space-between'}}>
 
-          <TouchableOpacity onPress={IncrementAction} style={{padding: 10}}>
+          <TouchableOpacity onPress={() => IncrementAction(id)} style={{padding: 10}}>
             <Image source={require('../images/like-icon.png')}/>
             <Text style={{padding: 11}}>{likes} </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={DecrementAction} style={{padding: 10}}>
+          <TouchableOpacity onPress={() => DecrementAction(id)} style={{padding: 10}}>
             <Image source={require('../images/dislike-icon.png')}/>
             <Text style={{padding: 11}}>{dislikes} </Text>
           </TouchableOpacity>
@@ -69,11 +47,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("inside mapStateToProps");
-  console.log(state);
   return {
-    likes: state.likes,
-    dislikes: state.dislikes
+    id: 'puppy',
+    likes: state.puppy.likes,
+    dislikes: state.puppy.dislikes
   }
 }
 

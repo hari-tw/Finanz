@@ -10,15 +10,21 @@ const likeDisLikeReducer = function likeDisLike (state, action) {
 
   switch (action.type) {
     case 'LIKE':
+      console.log(state)
       return {
         ...state,
-        likes: state.likes + action.payload
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          likes: state[action.payload.id].likes + action.payload.value
+        }
       }
-
     case 'DISLIKE':
       return {
         ...state,
-        dislikes: state.dislikes + action.payload
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          dislikes: state[action.payload.id].dislikes + action.payload.value
+        }
       }
     default:
       return state

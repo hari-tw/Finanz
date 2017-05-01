@@ -5,16 +5,22 @@
 export const LIKE = 'LIKE'
 export const DISLIKE = 'DISLIKE'
 
-export const IncrementAction = () => {
+export const IncrementAction = (id) => {
   return {
     type: LIKE,
-    payload: 1
+    payload: {
+      id: id,
+      value: 1
+    }
   }
 }
 
-export const DecrementAction = () => {
+export const DecrementAction = (id) => {
   return {
     type: DISLIKE,
-    payload: 1
+    payload: {
+      id: id,
+      value: 1
+    }
   }
 }
