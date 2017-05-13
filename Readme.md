@@ -2,10 +2,6 @@
 
 Examplar applications for learning React Native development concepts.
 
-
-# Concepts introduced in the bootcamp
-
-
 # Setup (for MacOS)
 
 Facebook wrote this [Getting Started Guide](https://facebook.github.io/react-native/docs/getting-started.html) for React Native apps. It provides instructions for iOS and Android, which are summarised here.
